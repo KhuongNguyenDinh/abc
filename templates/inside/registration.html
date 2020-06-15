@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block content %}
+
+<!-- Begin Service-section -->
+<section id="services" class="services-section section-global-wrapper">
+    <div class="container">
+        <div class="row">
+            {% if registered %}
+            <h3> Thank you for your official registration ! - Your account has been saved</h3>
+            {% else %}
+            <h3> REGISTER HERE - BY FILLING THE FORM </h3>
+
+            <table>
+                <form method='POST' enctype="multipart/form-data">
+                    {% csrf_token %} {% for field in user_form %}
+                    <tr>
+                        <td> {{field.label}} </td>
+                        <td> {{field}} </td>
+                    </tr>
+                    {% endfor %} {% for field in profile_form %}
+                    <tr>
+                        <td> {{field.label}} </td>
+                        <td> {{field}} </td>
+                    </tr>
+                    {% endfor %}
+
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" class="btn btn-primary" value="Register">
+                        </td>
+                    </tr>
+
+                </form>
+            </table>
+        </div>
+        {% endif %}
+    </div>
+    </div>
+</section>
+
+{% endblock %}

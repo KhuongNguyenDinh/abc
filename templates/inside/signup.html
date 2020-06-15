@@ -1,0 +1,9 @@
+{% load static %}
+
+
+<div class='row'>
+    <form method="post">
+        {{form.as_p}} {% csrf_token %}
+        <input type="submit" class="btn btn-primary" value="submit">
+    </form>
+</div>

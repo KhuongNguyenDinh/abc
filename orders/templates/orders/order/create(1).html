@@ -1,0 +1,42 @@
+﻿{% extends "base.html" %} {% load static %} {% load i18n static %} {% block head %}
+
+<head>
+    <title>Category</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Tech Mag template project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'css_js/styles/bootstrap-4.1.2/bootstrap.min.css'%}">
+    <link href="{% static 'css_js/plugins/font-awesome-4.7.0/css/font-awesome.min.css'%}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css_js/styles/category.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css_js/styles/category_responsive.css'%}">
+</head>
+{% endblock %} {% block content %}
+<div class="container">
+    <div class="row" style="margin-top: 6%">
+        <div class="col-md-8">
+            <h4 class="page-header">Checkout</h4>
+            <form action="." method="post">
+                {% csrf_token %} {{ form.as_p }}<br>
+                <input type="submit" class="btn btn-primary" value="Submit order">
+            </form>
+        </div>
+        <div class="col-md-4">
+            <div class="page-header">
+                Your Order
+            </div>
+            <ul class="list-group">
+                {% for item in cart %}
+                <li class="list-group-item">
+                    {{ item.quantity }}x {{ item.product.name }}
+                    <span>Kshs. {{ item.total_price }}</span>
+                </li>
+                {% endfor %}
+
+                <li class="list-group-item active">Total Cost: {{ cart.get_total_price }} VND</li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

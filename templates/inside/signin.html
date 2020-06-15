@@ -1,0 +1,42 @@
+<!doctype html> {% extends "base.html" %} {% block content %} {% load static %}{% load socialaccount %}
+
+<div class="container">
+    <a>{{last}}</a>
+    <h1> Login </h1>
+    <form method="POST" action="{% url 'inside:signin' %}">
+        <table>
+            <tr>
+                <td>
+                    <lable for="username">Username: </lable>
+                </td>
+                <td><input type="text" name="username" placeholder="Enter Username">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <lable for="password">Password: </lable>
+                </td>
+                <td><input type="password" name="password" placeholder="Enter Password"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" class="btn btn-primary" value="Submit">
+                </td>
+            </tr>
+        </table>
+        {% csrf_token %}
+    </form>
+</div>
+<div class="container">
+    <font color="red">{{result}}</font>
+</div>
+
+<button class="btn btn-primary">
+    <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
+</button>
+
+
+<button class="btn btn-primary">
+    <a href="{% provider_login_url 'google' %}">Login with Google</a>
+</button> {% endblock %} {% load socialaccount %}

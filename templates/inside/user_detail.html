@@ -1,0 +1,58 @@
+{% extends 'base.html' %} {% block content %}
+
+<!-- Begin Service-section -->
+<section id="services" class="services-section section-global-wrapper">
+  <div class="section">
+     <!-- container -->
+     <div class="container">
+         <!-- row -->
+         <div class="row">
+
+             <div class="col-md-2">
+                 <div class="billing-details">
+
+                 </div>
+             </div>
+             <div class="col-md-8">
+                 <div class="billing-details">
+
+                     {% if messages %}
+                         {% for message in messages %}
+                             <div class="alert alert-{{message.tags}}" role="alert">
+                                 {{ message }}
+                             </div>
+                         {% endfor %}
+                     {% endif %}
+
+                     <table class="shopping-cart-table table">
+                         <thead>
+                         <tr>
+                             <th>User Name</th>   <td> {{ user.username }}</td>
+                         </tr>
+                         <tr>
+                             <th>First Name</th>   <td>{{ user.first_name }}</td>
+                         </tr>
+
+                         <tr>
+                             <th>Last Name</th>   <td>{{ user.last_name }}</td>
+                         </tr>
+                         <tr>
+                             <th>Email</th>   <td>{{ user.email }}</td>
+                      
+
+
+                         </thead>
+
+                     </table>
+                 </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+
+
+</section>
+
+{% endblock %}
